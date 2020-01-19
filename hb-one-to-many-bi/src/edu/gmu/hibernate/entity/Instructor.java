@@ -1,5 +1,6 @@
 package edu.gmu.hibernate.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -50,6 +51,17 @@ public class Instructor {
 		this.lastName = lastName;
 		this.email = email;
 	}
+	
+	// add convenience method for bidirectional relationship.
+	public void add(Course aCourse) {
+		
+		if (courses == null)
+			courses = new ArrayList<>();
+		
+		courses.add(aCourse);
+		
+		aCourse.setInstructor(this);
+	}
 
 	// generate getter and setter.
 	public List<Course> getCourses() {
@@ -99,7 +111,7 @@ public class Instructor {
 	public void setInstructorDetail(InstructorDetail instructorDetail) {
 		this.instructorDetail = instructorDetail;
 	}
-
+	
 	// generate toString() method.
 	@Override
 	public String toString() {
