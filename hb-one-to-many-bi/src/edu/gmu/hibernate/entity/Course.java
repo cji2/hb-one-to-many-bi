@@ -1,5 +1,6 @@
 package edu.gmu.hibernate.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,8 +26,8 @@ public class Course {
 	private String title;
 	
 	// add new field for instructor (also add getter/setters)
-	// add @OnetoOne annotation.
-	@ManyToOne
+	// add @ManytoOne annotation.
+	@ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
 	@JoinColumn(name="instructor_id")
 	private Instructor instructor;
 	
