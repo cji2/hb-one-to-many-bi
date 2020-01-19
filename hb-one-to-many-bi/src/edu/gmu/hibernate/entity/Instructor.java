@@ -39,7 +39,7 @@ public class Instructor {
 	@JoinColumn(name="instructor_detail_id")
 	private InstructorDetail instructorDetail;
 	
-	@OneToMany(mappedBy="instructor")
+	@OneToMany(mappedBy="instructor", cascade={CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE})
 	private List<Course> courses;
 	
 	// create constructors.
